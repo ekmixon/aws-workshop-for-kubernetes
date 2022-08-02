@@ -33,7 +33,7 @@ def hello():
 
 @app.route("/hostname")
 def return_hostname():
-    return "This is an example wsgi app served from {} to {}".format(socket.gethostname(), request.remote_addr)
+    return f"This is an example wsgi app served from {socket.gethostname()} to {request.remote_addr}"
 
 @app.route("/env")
 def env():
@@ -43,7 +43,7 @@ def env():
 @app.route('/fib/<int:number>')
 def index(number=1):
     result = fib(number)
-    return "Python Fib("+ str(number) + "): " + str(result)
+    return f"Python Fib({str(number)}): {str(result)}"
 
 @xray_recorder.capture('Fibonnaci')
 def fib(n):
